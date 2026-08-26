@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>امتحان الكربوهيدرات - منصة ألفا</title>
+<title>امتحان الأول - الكربوهيدرات - الأستاذ أحمد الجمّال</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
@@ -37,147 +37,94 @@
     overflow-x:hidden;
   }
 
-  /* signature: hexagon ring lattice, echoing the pyranose sugar ring */
-  .lattice{
-    position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.16;
-  }
+  .lattice{ position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.14; }
   .lattice svg{width:100%;height:100%;}
 
-  .wrap{
-    max-width:760px;
-    margin:0 auto;
-    position:relative;
-    z-index:1;
+  .wrap{ max-width:780px; margin:0 auto; position:relative; z-index:1; }
+
+  header{ text-align:center; margin-bottom:22px; }
+
+  .avatar-wrap{
+    width:92px; height:92px;
+    margin:0 auto 14px;
+    border-radius:50%;
+    padding:3px;
+    background:linear-gradient(135deg, var(--ring-gold), var(--sugar-rose));
+    box-shadow:0 10px 30px -8px rgba(217,164,65,0.5);
+  }
+  .avatar-wrap img{
+    width:100%; height:100%;
+    border-radius:50%;
+    object-fit:cover;
+    display:block;
+    border:3px solid var(--bg-deep);
   }
 
-  header{
-    text-align:center;
-    margin-bottom:28px;
-  }
   .eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-family:'Cairo', sans-serif;
-    font-weight:600;
-    font-size:13px;
-    letter-spacing:0.5px;
-    color:var(--ring-gold-soft);
-    background:rgba(217,164,65,0.08);
-    border:1px solid var(--line);
-    padding:6px 16px;
-    border-radius:999px;
-    margin-bottom:16px;
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Cairo', sans-serif; font-weight:600; font-size:13px;
+    letter-spacing:0.5px; color:var(--ring-gold-soft);
+    background:rgba(217,164,65,0.08); border:1px solid var(--line);
+    padding:6px 16px; border-radius:999px; margin-bottom:14px;
   }
   .eyebrow span.dot{width:6px;height:6px;border-radius:50%;background:var(--ring-gold);}
 
   h1{
-    font-family:'Cairo', sans-serif;
-    font-weight:800;
-    font-size:clamp(26px, 5vw, 38px);
-    margin:0 0 8px;
-    color:var(--text-light);
+    font-family:'Cairo', sans-serif; font-weight:800;
+    font-size:clamp(24px, 5vw, 34px); margin:0 0 6px; color:var(--text-light);
   }
-  h1 em{
-    font-style:normal;
-    color:var(--ring-gold-soft);
-  }
-  .sub{
-    color:var(--text-muted);
-    font-size:15px;
-    margin:0;
+  h1 em{ font-style:normal; color:var(--ring-gold-soft); }
+  .sub{ color:var(--text-muted); font-size:14.5px; margin:0; line-height:1.7; }
+  .teacher-tag{
+    font-family:'Cairo',sans-serif; font-weight:700; font-size:13.5px;
+    color:var(--sugar-rose); margin-top:4px;
   }
 
-  .progress-track{
-    height:6px;
-    background:rgba(255,255,255,0.08);
-    border-radius:99px;
-    overflow:hidden;
-    margin:26px 0 6px;
-  }
-  .progress-fill{
-    height:100%;
-    background:linear-gradient(90deg, var(--ring-gold), var(--sugar-rose));
-    width:0%;
-    transition:width .45s cubic-bezier(.4,0,.2,1);
-  }
-  .progress-label{
-    display:flex;
-    justify-content:space-between;
-    font-size:13px;
-    color:var(--text-muted);
-    margin-bottom:18px;
-    font-family:'Cairo',sans-serif;
-  }
+  .progress-track{ height:6px; background:rgba(255,255,255,0.08); border-radius:99px; overflow:hidden; margin:24px 0 6px; }
+  .progress-fill{ height:100%; background:linear-gradient(90deg, var(--ring-gold), var(--sugar-rose)); width:0%; transition:width .45s cubic-bezier(.4,0,.2,1); }
+  .progress-label{ display:flex; justify-content:space-between; font-size:13px; color:var(--text-muted); margin-bottom:18px; font-family:'Cairo',sans-serif; }
   .score-live{color:var(--ring-gold-soft); font-weight:700;}
 
   .card{
     background:linear-gradient(160deg, var(--panel), rgba(16,58,55,0.6));
-    border:1px solid var(--line);
-    border-radius:20px;
-    padding:28px 24px;
-    position:relative;
-    box-shadow:0 20px 50px -20px rgba(0,0,0,0.5);
+    border:1px solid var(--line); border-radius:20px; padding:26px 22px;
+    position:relative; box-shadow:0 20px 50px -20px rgba(0,0,0,0.5);
     animation:rise .4s ease both;
   }
-  @keyframes rise{
-    from{opacity:0; transform:translateY(14px);}
-    to{opacity:1; transform:translateY(0);}
-  }
+  @keyframes rise{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
 
-  .qnum{
-    font-family:'Cairo', sans-serif;
-    font-weight:800;
-    font-size:14px;
-    color:var(--ring-gold);
-    margin-bottom:10px;
-    letter-spacing:0.5px;
-  }
-  .qtext{
-    font-size:19px;
-    font-weight:500;
-    line-height:1.7;
-    margin:0 0 22px;
-    color:var(--text-light);
-  }
+  .qnum{ font-family:'Cairo', sans-serif; font-weight:800; font-size:14px; color:var(--ring-gold); margin-bottom:10px; letter-spacing:0.5px; }
+  .qtext{ font-size:17.5px; font-weight:500; line-height:1.8; margin:0 0 16px; color:var(--text-light); }
 
-  .options{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
+  .data-table{
+    width:100%; border-collapse:collapse; margin:0 0 20px;
+    font-size:14px; background:rgba(0,0,0,0.15); border-radius:10px; overflow:hidden;
   }
+  .data-table th, .data-table td{
+    padding:9px 10px; text-align:center; border-bottom:1px solid var(--line);
+  }
+  .data-table th{
+    background:rgba(217,164,65,0.14); color:var(--ring-gold-soft);
+    font-family:'Cairo',sans-serif; font-weight:700;
+  }
+  .data-table tr:last-child td{ border-bottom:none; }
+
+  .options{ display:flex; flex-direction:column; gap:11px; }
   .opt{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:14px 16px;
-    border:1.5px solid var(--line);
-    border-radius:13px;
-    background:rgba(255,255,255,0.02);
-    cursor:pointer;
-    font-size:16px;
-    text-align:right;
-    transition:border-color .2s, background .2s, transform .15s;
-    color:var(--text-light);
+    display:flex; align-items:center; gap:12px; padding:13px 15px;
+    border:1.5px solid var(--line); border-radius:13px; background:rgba(255,255,255,0.02);
+    cursor:pointer; font-size:15px; text-align:right; transition:border-color .2s, background .2s, transform .15s;
+    color:var(--text-light); line-height:1.5;
   }
   .opt:hover{border-color:var(--ring-gold); background:rgba(217,164,65,0.06);}
   .opt .badge{
-    flex:0 0 26px;
-    height:26px;
-    border-radius:50%;
-    border:1.5px solid var(--line);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:'Cairo',sans-serif;
-    font-size:13px;
-    font-weight:700;
-    color:var(--text-muted);
-    transition:all .2s;
+    flex:0 0 26px; height:26px; border-radius:50%; border:1.5px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cairo',sans-serif; font-size:13px; font-weight:700;
+    color:var(--text-muted); transition:all .2s;
   }
   .opt.selected{border-color:var(--ring-gold); background:rgba(217,164,65,0.1);}
   .opt.selected .badge{background:var(--ring-gold); color:#0b2e2c; border-color:var(--ring-gold);}
-
   .opt.correct{border-color:var(--correct); background:rgba(76,175,125,0.12);}
   .opt.correct .badge{background:var(--correct); color:#0b2e2c; border-color:var(--correct);}
   .opt.wrong{border-color:var(--wrong); background:rgba(224,115,107,0.12);}
@@ -185,104 +132,49 @@
   .opt.disabled{cursor:default;}
 
   .explain{
-    margin-top:16px;
-    padding:14px 16px;
-    border-radius:12px;
-    background:rgba(0,0,0,0.18);
-    border-right:3px solid var(--ring-gold);
-    font-size:14.5px;
-    line-height:1.8;
-    color:var(--text-muted);
-    display:none;
+    margin-top:16px; padding:14px 16px; border-radius:12px;
+    background:rgba(0,0,0,0.18); border-right:3px solid var(--ring-gold);
+    font-size:14px; line-height:1.8; color:var(--text-muted); display:none;
   }
   .explain.show{display:block; animation:rise .3s ease both;}
   .explain b{color:var(--ring-gold-soft);}
 
-  .nav-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-top:24px;
-  }
+  .nav-row{ display:flex; justify-content:space-between; align-items:center; margin-top:22px; }
   .btn{
-    font-family:'Cairo', sans-serif;
-    font-weight:700;
-    font-size:15px;
-    padding:12px 26px;
-    border-radius:12px;
-    border:none;
-    cursor:pointer;
+    font-family:'Cairo', sans-serif; font-weight:700; font-size:15px;
+    padding:12px 26px; border-radius:12px; border:none; cursor:pointer;
     transition:transform .15s, opacity .15s;
   }
   .btn:active{transform:scale(0.97);}
-  .btn-primary{
-    background:linear-gradient(90deg, var(--ring-gold), var(--ring-gold-soft));
-    color:#0b2e2c;
-  }
+  .btn-primary{ background:linear-gradient(90deg, var(--ring-gold), var(--ring-gold-soft)); color:#0b2e2c; }
   .btn-primary:disabled{opacity:0.35; cursor:not-allowed;}
-  .btn-ghost{
-    background:transparent;
-    color:var(--text-muted);
-    border:1px solid var(--line);
-  }
+  .btn-ghost{ background:transparent; color:var(--text-muted); border:1px solid var(--line); }
 
-  .result{
-    text-align:center;
-    padding:20px 10px;
-  }
-  .result .ring-score{
-    width:150px; height:150px;
-    margin:0 auto 20px;
-    position:relative;
-  }
+  .result{ text-align:center; padding:18px 8px; }
+  .result .ring-score{ width:150px; height:150px; margin:0 auto 20px; position:relative; }
   .result .ring-score svg{width:100%; height:100%;}
   .result .ring-score .num{
-    position:absolute; inset:0;
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Cairo',sans-serif;
-    font-size:34px; font-weight:800;
-    color:var(--text-light);
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:'Cairo',sans-serif; font-size:34px; font-weight:800; color:var(--text-light);
   }
-  .result h2{
-    font-family:'Cairo',sans-serif;
-    font-size:24px;
-    margin:0 0 6px;
-  }
-  .result p{color:var(--text-muted); margin:0 0 22px;}
+  .result h2{ font-family:'Cairo',sans-serif; font-size:23px; margin:0 0 6px; }
+  .result p{color:var(--text-muted); margin:0 0 20px;}
 
-  .review-list{
-    text-align:right;
-    margin-top:24px;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-  }
+  .review-list{ text-align:right; margin-top:22px; display:flex; flex-direction:column; gap:10px; }
   .review-item{
-    display:flex;
-    align-items:flex-start;
-    gap:10px;
-    padding:12px 14px;
-    border-radius:10px;
-    background:rgba(255,255,255,0.03);
-    font-size:14px;
-    line-height:1.6;
+    display:flex; align-items:flex-start; gap:10px; padding:12px 14px;
+    border-radius:10px; background:rgba(255,255,255,0.03); font-size:13.5px; line-height:1.6;
   }
   .review-item .mark{flex:0 0 20px; font-weight:800;}
   .review-item.ok .mark{color:var(--correct);}
   .review-item.bad .mark{color:var(--wrong);}
 
-  footer{
-    text-align:center;
-    margin-top:30px;
-    font-size:12.5px;
-    color:var(--text-muted);
-    opacity:0.7;
-    font-family:'Cairo', sans-serif;
-  }
+  footer{ text-align:center; margin-top:28px; font-size:12.5px; color:var(--text-muted); opacity:0.7; font-family:'Cairo', sans-serif; }
 
   @media (max-width:480px){
-    .card{padding:22px 16px;}
-    .qtext{font-size:17px;}
+    .card{padding:20px 15px;}
+    .qtext{font-size:16px;}
+    .data-table{font-size:12.5px;}
   }
 </style>
 </head>
@@ -292,9 +184,13 @@
 
 <div class="wrap">
   <header>
-    <div class="eyebrow"><span class="dot"></span> منصّة ألفا التعليمية &nbsp;·&nbsp; الأحياء</div>
-    <h1>امتحان درس <em>الكربوهيدرات</em></h1>
-    <p class="sub">توجيهي الأردن — اختبر فهمك لأنواع السكريات وبنائها ووظائفها</p>
+    <div class="avatar-wrap">
+      <img src="https://i.ibb.co/Ng1gPf3m/images.jpg" alt="الأستاذ أحمد الجمّال">
+    </div>
+    <div class="eyebrow"><span class="dot"></span> منصّة ألفا التعليمية &nbsp;·&nbsp; الأحياء توجيهي</div>
+    <h1>الامتحان الأول: <em>الكربوهيدرات</em></h1>
+    <p class="sub">أسئلة تحليلية بمستوى بين المتوسط والقدرات — ركّز جيداً قبل الإجابة</p>
+    <p class="teacher-tag">الأستاذ أحمد الجمّال</p>
   </header>
 
   <div id="quiz-area">
@@ -306,7 +202,10 @@
 
     <div class="card">
       <div class="qnum" id="qnum-label">السؤال 1</div>
-      <p class="qtext" id="qtext"></p>
+      <div id="qtext-wrap">
+        <p class="qtext" id="qtext"></p>
+        <div id="qextra"></div>
+      </div>
       <div class="options" id="options"></div>
       <div class="explain" id="explain"></div>
       <div class="nav-row">
@@ -318,80 +217,134 @@
 
   <div id="result-area" style="display:none;"></div>
 
-  <footer>صُمم لمراجعة درس الكربوهيدرات — أحياء توجيهي</footer>
+  <footer>امتحان مراجعة لدرس الكربوهيدرات — أحياء توجيهي الأردن</footer>
 </div>
 
 <script>
 const questions = [
   {
-    q: "أي مما يلي يُعد مثالاً على سكر أحادي (Monosaccharide)؟",
-    options: ["الغلوكوز", "السكروز", "اللاكتوز", "النشا"],
-    correct: 0,
-    explain: "<b>الغلوكوز</b> سكر أحادي يتكون من وحدة سكرية واحدة (C6H12O6)، بينما السكروز واللاكتوز سكريات ثنائية، والنشا سكر عديد."
-  },
-  {
-    q: "ينتج السكروز (Sucrose) من اتحاد أي سكرين أحاديين؟",
-    options: ["غلوكوز + غلوكوز", "غلوكوز + غالاكتوز", "غلوكوز + فركتوز", "فركتوز + غالاكتوز"],
+    q: "(1) أيّ الآتي لا يُعدّ من المركبات العضوية الحيوية الرئيسية في جسم الكائن الحي؟",
+    options: ["البروتينات", "الكربوهيدرات", "الفيتامينات", "الحموض النووية"],
     correct: 2,
-    explain: "يتكون <b>السكروز</b> من ارتباط جزيء غلوكوز بجزيء فركتوز برابطة جليكوسيدية، وينتج عن التحلل الماء (Dehydration synthesis)."
+    explain: "المركبات العضوية الحيوية الرئيسية أربعة: <b>الكربوهيدرات، والبروتينات، والدهون، والحموض النووية</b>. أما الفيتامينات فهي مركبات عضوية مهمة للجسم لكنها لا تُصنَّف ضمن هذه المجموعات الأربع الكبرى."
   },
   {
-    q: "ما نوع الرابطة التي تصل بين وحدات السكر الأحادي في السكريات الثنائية والعديدة؟",
-    options: ["الرابطة الببتيدية", "الرابطة الجليكوسيدية", "الرابطة الأيونية", "الرابطة الفوسفودايستر"],
-    correct: 1,
-    explain: "تتكون <b>الرابطة الجليكوسيدية</b> بين مجموعة الهيدروكسيل لسكر أحادي وأخرى لسكر آخر، مصحوبة بفقدان جزيء ماء."
-  },
-  {
-    q: "أي من السكريات العديدة التالية يُخزَّن في خلايا الكبد والعضلات عند الإنسان؟",
-    options: ["السليلوز", "الكيتين", "الغلايكوجين", "النشا"],
-    correct: 2,
-    explain: "<b>الغلايكوجين</b> هو المادة النشوية الحيوانية، يُخزَّن في الكبد والعضلات كمصدر احتياطي للطاقة."
-  },
-  {
-    q: "ما الوظيفة الأساسية للسليلوز (Cellulose) في النباتات؟",
-    options: ["تخزين الطاقة", "نقل المواد الغذائية", "تركيب الجدار الخلوي", "تكوين الإنزيمات"],
-    correct: 2,
-    explain: "يُشكّل <b>السليلوز</b> المكوّن الرئيسي للجدار الخلوي في النباتات، ويمنحه الصلابة والدعامة."
-  },
-  {
-    q: "اللاكتوز (سكر الحليب) يتكون من اتحاد أي سكرين؟",
-    options: ["غلوكوز + غلوكوز", "غلوكوز + غالاكتوز", "غلوكوز + فركتوز", "غالاكتوز + فركتوز"],
-    correct: 1,
-    explain: "يتكون <b>اللاكتوز</b> من ارتباط جزيء غلوكوز مع جزيء غالاكتوز، وهو السكر الرئيسي في حليب الثدييات."
-  },
-  {
-    q: "لماذا لا يستطيع جسم الإنسان هضم السليلوز؟",
+    q: "(2) عزل باحث مركباً من خلية نباتية وأثبت التحليل احتواءه على الكربون والهيدروجين والأكسجين. قال أحد الطلبة: إذن المركب كربوهيدرات حتماً. أيّ نقد علمي لاستنتاجه هو الأدق؟",
     options: [
-      "لأنه سكر أحادي معقد التركيب",
-      "لعدم امتلاك الإنسان الإنزيم المحلل للرابطة الجليكوسيدية بيتا",
-      "لأنه مادة غير عضوية",
-      "لأن السليلوز سام للخلايا"
+      "الاستنتاج صحيح؛ لأن وجود الأكسجين يميز الكربوهيدرات عن بقية المركبات العضوية الحيوية.",
+      "الاستنتاج صحيح إذا كان عدد ذرات الكربون فيه بين 3 و7.",
+      "الاستنتاج غير كافٍ؛ لأن نوع الذرات وحده لا يكفي لتحديد نوع المركب العضوي الحيوي.",
+      "الاستنتاج غير صحيح؛ لأن الكربوهيدرات لا تحتوي إلا على الكربون والهيدروجين."
+    ],
+    correct: 2,
+    explain: "الدهون والبروتينات وبعض المركبات الأخرى تحتوي أيضاً على الكربون والهيدروجين والأكسجين، لذا فإن نوع العناصر وحده <b>لا يكفي</b> لتحديد نوع المركب؛ يلزم معرفة النسب والتركيب البنائي أيضاً."
+  },
+  {
+    q: "(3) سكرٌ أحادي مجموع عدد ذرات الأكسجين والهيدروجين في جزيئه يساوي 18، ويأخذ غالباً شكلاً حلقياً خماسياً، ويوجد بكثرة في النباتات (كالفواكه). أيّ مما يأتي يمثّل اسم هذا السكر وصيغته الجزيئية الصحيحة؟",
+    options: [
+      "الغلوكوز — C₆H₁₂O₆",
+      "الفركتوز — C₆H₁₂O₆",
+      "الريبوز — C₅H₁₀O₅",
+      "الغالاكتوز — C₆H₁₂O₆"
     ],
     correct: 1,
-    explain: "يفتقر جسم الإنسان لإنزيم <b>السليولاز</b> اللازم لتحليل الرابطة الجليكوسيدية من النوع بيتا (β) الموجودة في السليلوز، بعكس النشا ذي الرابطة ألفا (α)."
+    explain: "في <b>الفركتوز</b> (C₆H₁₂O₆) عدد ذرات الهيدروجين 12 والأكسجين 6، ومجموعهما 18. كما يميل الفركتوز لتكوين حلقة خماسية (فيورانوز) بعكس الغلوكوز الذي يُكوّن حلقة سداسية (بيرانوز)، وهو وفير في الفواكه والنباتات."
   },
   {
-    q: "الصيغة الكيميائية العامة للسكريات الأحادية هي:",
-    options: ["(CH2O)n", "C6H12O6 فقط", "CnH2nO", "C(H2O)2n"],
-    correct: 0,
-    explain: "تتبع السكريات الأحادية الصيغة العامة <b>(CH₂O)n</b> حيث n تمثل عدد ذرات الكربون، ومنها الغلوكوز حيث n=6."
-  },
-  {
-    q: "أي مما يلي يُصنَّف ضمن السكريات العديدة (Polysaccharides)؟",
-    options: ["الفركتوز والمالتوز", "الغلوكوز والغالاكتوز", "النشا والغلايكوجين والسليلوز", "السكروز واللاكتوز"],
-    correct: 2,
-    explain: "<b>النشا والغلايكوجين والسليلوز</b> جميعها سكريات عديدة، أي بوليمرات مكوّنة من عدد كبير من وحدات الغلوكوز المرتبطة جليكوسيدياً."
-  },
-  {
-    q: "ما الوظيفة الحيوية الرئيسية للكربوهيدرات في الكائنات الحية؟",
+    q: "(4) درس طالب ثلاثة مركبات لها الصيغة الجزيئية نفسها C₆H₁₂O₆، ولاحظ اختلاف ترتيب الذرات في صيغها البنائية. أيّ استنتاج يُعدّ الأكثر دقة؟",
     options: [
-      "حمل الشيفرة الوراثية فقط",
-      "مصدر رئيسي للطاقة ومكوّن بنائي في بعض الكائنات",
-      "تنظيم درجة حرارة الجسم فقط",
-      "نقل الأكسجين في الدم"
+      "يمكن أن تمثل مركبات مختلفة رغم تطابق صيغها الجزيئية.",
+      "لا بد أن تمثل المركب نفسه؛ لأن عدد الذرات متماثل.",
+      "اختلاف الصيغة البنائية يعني بالضرورة اختلاف عدد ذرات الكربون.",
+      "يجب أن ينتمي أحدها إلى السكريات الثنائية."
     ],
-    correct: 1,
-    explain: "الكربوهيدرات <b>مصدر رئيسي للطاقة</b> (كالغلوكوز) وتدخل في التراكيب البنائية مثل الجدار الخلوي النباتي والهيكل الخارجي للحشرات (الكيتين)."
+    correct: 0,
+    explain: "الغلوكوز والفركتوز والغالاكتوز جميعها بالصيغة الجزيئية نفسها C₆H₁₂O₆، لكنها <b>أيزومرات</b> (متصاوغات) تختلف في ترتيب الذرات بنائياً، وهذا يجعلها مركبات مختلفة في خصائصها رغم تطابق الصيغة الجزيئية."
+  },
+  {
+    q: "(5) تفاعل جزيئان من الغلوكوز لتكوين جزيء مالتوز واحد. إذا كانت صيغة الغلوكوز C₆H₁₂O₆، فما الوصف الصحيح للناتج مباشرة؟",
+    options: [
+      "C₁₂H₂₄O₁₂ مع نزع جزيء ماء",
+      "C₁₂H₂₂O₁₁ مع إضافة جزيء ماء إلى الناتج",
+      "C₁₂H₂₀O₁₀ مع خروج جزيئين من الماء",
+      "C₁₂H₂₂O₁₁ مع نزع جزيء ماء"
+    ],
+    correct: 3,
+    explain: "عند اتحاد جزيئي غلوكوز (2×C₆H₁₂O₆ = C₁₂H₂₄O₁₂) بتفاعل <b>الاجتماع المائي (تكثيف)</b>، يخرج جزيء ماء واحد (H₂O)، فيصبح ناتج المالتوز C₁₂H₂₂O₁₁."
+  },
+  {
+    q: "(6) فحص أحمد الجمّال سكرين ثنائيين X وY، فوجد أن كليهما له الصيغة الجزيئية نفسها. وعند تفكيكهما أعطى X غلوكوز + غلوكوز، بينما أعطى Y غلوكوز + فركتوز. ما الاستنتاج الأقوى؟",
+    options: [
+      "X وY متماثلان؛ لأن الصيغة الجزيئية هي التي تحدد هوية المركب وحدها.",
+      "Y ليس كربوهيدرات لأن وحدتيه مختلفتان.",
+      "X لا يحتوي رابطة غلايكوسيدية لأن وحدتيه متماثلتان.",
+      "تشابه الصيغة الجزيئية لا يعني تطابق المركبين؛ إذ تختلف الوحدات الأحادية الداخلة في تركيبهما."
+    ],
+    correct: 3,
+    explain: "X هو <b>المالتوز</b> (غلوكوز + غلوكوز) وY هو <b>السكروز</b> (غلوكوز + فركتوز)، ولهما الصيغة الجزيئية نفسها C₁₂H₂₂O₁₁، لكنهما مركبان مختلفان تماماً في الخواص لاختلاف الوحدات الأحادية المكوِّنة لهما."
+  },
+  {
+    q: "(7) قدّم طالبان تفسيرين لقوة ألياف السليلوز: الأول قال إن القوة ناتجة فقط عن الروابط الغلايكوسيدية بين وحدات الغلوكوز. أما الثاني فقال إن هناك روابط غلايكوسيدية داخل السلاسل، وروابط هيدروجينية بين السلاسل المتوازية. أيّ حكم هو الأدق؟",
+    options: [
+      "الأول فقط؛ لأن جميع الروابط في السليلوز تساهمية.",
+      "الأول فقط؛ لأن الروابط الهيدروجينية توجد داخل جزيء الغلوكوز فقط.",
+      "الثاني؛ لأنه يميز بين الروابط داخل السلسلة والروابط التي تربط السلاسل المتوازية معاً.",
+      "كلاهما خطأ؛ لأن السليلوز لا يحتوي روابط غلايكوسيدية."
+    ],
+    correct: 2,
+    explain: "تُشكّل <b>الروابط الغلايكوسيدية بيتا</b> العمود الفقري لكل سلسلة سليلوز منفردة، بينما تربط <b>الروابط الهيدروجينية</b> السلاسل المتوازية مع بعضها لتكوين ألياف صلبة شديدة المتانة، وهذا ما يفسر قوة الجدار الخلوي النباتي."
+  },
+  {
+    q: "(8) لدى مصنع 250 g من النشا النباتي، وتركيبه يقع ضمن النسب الآتية: 20–30% أميلوز و70–80% أميلوبكتين. أيّ النتائج الآتية لا تتفق مع هذه النسب؟",
+    options: [
+      "90 g أميلوز و160 g أميلوبكتين",
+      "50 g أميلوز و200 g أميلوبكتين",
+      "62.5 g أميلوز و187.5 g أميلوبكتين",
+      "75 g أميلوز و175 g أميلوبكتين"
+    ],
+    correct: 0,
+    explain: "90 g من أصل 250 g تعني أن نسبة الأميلوز 36%، وهي نسبة <b>تتجاوز الحد الأعلى المسموح به (30%)</b>، لذا فهذا الخيار هو الوحيد الذي لا يتفق مع النطاق المعطى؛ أما باقي الخيارات فتقع جميعها ضمن نطاق 20–30% أميلوز."
+  },
+  {
+    q: "(9) يوضح الجدول الآتي النسبة التقريبية للأميلوز والأميلوبكتين في نشا أربعة أنواع من النباتات:",
+    extraTable: {
+      headers: ["النبات", "نسبة الأميلوز", "نسبة الأميلوبكتين"],
+      rows: [
+        ["البطاطا", "20%", "80%"],
+        ["البطاطا الحلوة", "18%", "82%"],
+        ["الذرة", "25%", "75%"],
+        ["القمح", "24%", "76%"]
+      ]
+    },
+    qAfterTable: "بالاعتماد على الجدول، أيّ العبارات الآتية صحيحة؟",
+    options: [
+      "الذرة والقمح متقاربان في نسبة الأميلوز، وكلاهما أعلى من البطاطا والبطاطا الحلوة",
+      "البطاطا الحلوة تحوي أعلى نسبة أميلوز بين النباتات الأربعة",
+      "نسبة الأميلوبكتين في القمح أقل من نسبتها في البطاطا",
+      "الأميلوز والأميلوبكتين متساويان في نسبتهما في نبات الذرة"
+    ],
+    correct: 0,
+    explain: "من الجدول: نسبة الأميلوز في الذرة (25%) والقمح (24%) <b>متقاربتان وأعلى</b> من نسبتها في البطاطا (20%) والبطاطا الحلوة (18%)، بينما يبقى الأميلوبكتين هو الجزء الأكبر دائماً في تركيب النشا الطبيعي في جميع النباتات."
+  },
+  {
+    q: "(10) دُرست ثلاث مواد مجهولة P وQ وR، وسُجّلت خصائصها في الجدول الآتي:",
+    extraTable: {
+      headers: ["المادة", "درجة التفرع", "نوع الرابطة الغلايكوسيدية", "المصدر"],
+      rows: [
+        ["P", "متفرعة بشدة", "ألفا (α)", "حيواني"],
+        ["Q", "خطية غير متفرعة", "بيتا (β)", "نباتي"],
+        ["R", "متفرعة بشدة", "ألفا (α)", "نباتي"]
+      ]
+    },
+    qAfterTable: "إذا كانت R أحد مكوّنات النشا، فما التحديد الأكثر منطقية للمواد الثلاث؟",
+    options: [
+      "P غلايكوجين، Q سليلوز، R أميلوبكتين",
+      "P سليلوز، Q غلايكوجين، R أميلوز",
+      "P أميلوز، Q سليلوز، R غلايكوجين",
+      "P أميلوبكتين، Q أميلوز، R سليلوز"
+    ],
+    correct: 0,
+    explain: "<b>الغلايكوجين (P)</b> مصدره حيواني ومتفرع بشدة بروابط ألفا، و<b>السليلوز (Q)</b> نباتي خطي بروابط بيتا لا يتفرع، أما <b>الأميلوبكتين (R)</b> فهو أحد مكوّني النشا النباتي، متفرع الشكل، وروابطه من نوع ألفا — وهذا يتوافق تماماً مع بيانات الجدول."
   }
 ];
 
@@ -401,10 +354,10 @@ let answered = false;
 const userAnswers = [];
 
 const qtext = document.getElementById('qtext');
+const qextra = document.getElementById('qextra');
 const optionsEl = document.getElementById('options');
 const explainEl = document.getElementById('explain');
 const btnNext = document.getElementById('btn-next');
-const btnRestart = document.getElementById('btn-restart');
 const curQEl = document.getElementById('cur-q');
 const totalQEl = document.getElementById('total-q');
 const liveScoreEl = document.getElementById('live-score');
@@ -412,6 +365,17 @@ const progressFill = document.getElementById('progress-fill');
 const qnumLabel = document.getElementById('qnum-label');
 
 totalQEl.textContent = questions.length;
+
+function buildTableHTML(tableData){
+  let html = '<table class="data-table"><thead><tr>';
+  tableData.headers.forEach(h => html += `<th>${h}</th>`);
+  html += '</tr></thead><tbody>';
+  tableData.rows.forEach(row => {
+    html += '<tr>' + row.map(c => `<td>${c}</td>`).join('') + '</tr>';
+  });
+  html += '</tbody></table>';
+  return html;
+}
 
 function renderQuestion(){
   answered = false;
@@ -426,6 +390,18 @@ function renderQuestion(){
   curQEl.textContent = current + 1;
   liveScoreEl.textContent = score;
   progressFill.style.width = ((current) / questions.length * 100) + '%';
+
+  qextra.innerHTML = '';
+  if(item.extraTable){
+    qextra.innerHTML = buildTableHTML(item.extraTable);
+    if(item.qAfterTable){
+      const p = document.createElement('p');
+      p.className = 'qtext';
+      p.style.marginTop = '4px';
+      p.textContent = item.qAfterTable;
+      qextra.appendChild(p);
+    }
+  }
 
   optionsEl.innerHTML = '';
   const letters = ['أ','ب','ج','د'];
@@ -479,9 +455,9 @@ function showResult(){
   const circumference = 2 * Math.PI * 60;
   const offset = circumference - (pct / 100) * circumference;
 
-  let msg = 'أداء ممتاز! فهمك لدرس الكربوهيدرات قوي جداً.';
-  if(pct < 50) msg = 'يحتاج الدرس لمراجعة إضافية، لا تقلق وحاول مجدداً.';
-  else if(pct < 80) msg = 'أداء جيد! راجع الأسئلة التي أخطأت بها لترسيخ الفهم.';
+  let msg = 'أداء ممتاز! فهمك لدرس الكربوهيدرات على مستوى تحليلي قوي جداً.';
+  if(pct < 50) msg = 'الأسئلة كانت تحليلية وصعبة نوعاً ما، راجع الدرس وحاول مجدداً.';
+  else if(pct < 80) msg = 'أداء جيد! راجع الأسئلة التي أخطأت بها لترسيخ الفهم التحليلي.';
 
   let reviewHTML = '';
   questions.forEach((item, i) => {
@@ -527,7 +503,6 @@ function restart(){
   renderQuestion();
 }
 
-// background hexagon lattice (pyranose ring motif)
 function buildLattice(){
   const el = document.getElementById('lattice');
   const ns = 'http://www.w3.org/2000/svg';
